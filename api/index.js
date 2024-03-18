@@ -1,6 +1,7 @@
 import express from 'express';
 import { dbConnect } from '../utils/dbConnect.js';
 import dotenv from 'dotenv'
+import userRoutes from './Routes/User.js';
 
 dotenv.config()
 
@@ -23,6 +24,8 @@ const runServer = async (fn) => {
 runServer(() => {
     //Start the server
 
+    app.use('/api/user', userRoutes)
+    
     app.listen(PORT, () => {
         console.log(`Server is listning at port ${PORT}`)
     })
